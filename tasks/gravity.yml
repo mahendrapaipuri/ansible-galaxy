@@ -1,6 +1,10 @@
 ---
 # Configure Gravity
 
+- name: Ensure Galaxy version is set
+  include_tasks: _inc_galaxy_version.yml
+  when: __galaxy_major_version is undefined
+
 - name: Gravity setup (Gravity < 1)
   when: __galaxy_major_version is version('23.0', '<')
   block:
